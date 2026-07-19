@@ -1,0 +1,9 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Broken loop: clean circle dissolving into the wavy-underline gesture, style B -->
+  <g stroke="currentColor" stroke-linecap="round" fill="none" transform="translate(0 2.5)">
+    <!-- clean major arc -->
+    <path d="M15.2 30.3 A12.5 12.5 0 1 1 32.8 30.3" stroke-width="3"/>
+    <!-- wavy bottom -->
+    <path d="M15.2 30.3 C17.2 27.9 19.2 32.5 21.4 30.2 C23.6 27.9 25.6 32.5 27.8 30.2 C29.8 28.1 31.2 31.7 32.8 30.2" stroke-width="2.6"/>
+  </g>
+</svg>

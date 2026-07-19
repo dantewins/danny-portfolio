@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, Merriweather, Raleway } from "next/font/google";
 import "./globals.css";
-import { Container } from "@/components/ui/container";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -16,14 +15,24 @@ const merriweather = Merriweather({
 });
 
 const raleway = Raleway({
-  variable: "--font-inter",
+  variable: "--font-raleway",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
   title: "Danny Kim",
-  description: "Danny's developer portfolio showcasing projects and skills",
+  description:
+    "Danny Kim designs and builds thoughtful web products, learning tools, and AI workflows.",
+  openGraph: {
+    title: "Danny Kim",
+    description: "Thoughtful web products, learning tools, and AI workflows.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Danny Kim",
+    description: "Thoughtful web products, learning tools, and AI workflows.",
+  },
 };
 
 export default function RootLayout({
@@ -33,8 +42,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${merriweather.variable} ${raleway.variable} antialiased`}>
-        <Container>{children}</Container>
+      <body
+        className={`${poppins.variable} ${merriweather.variable} ${raleway.variable} antialiased`}
+      >
+        {children}
       </body>
     </html>
   );

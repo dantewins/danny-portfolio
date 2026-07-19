@@ -1,0 +1,16 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Caret spark: clean terminal prompt + hand-drawn sparkle, style B -->
+  <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" transform="translate(-4.8 3.8)">
+    <!-- clean caret -->
+    <path d="M15 14 L28.5 24 L15 34" stroke-width="3.4"/>
+    <!-- clean underscore -->
+    <path d="M32 33.8 L40 33.8" stroke-width="3.4"/>
+    <!-- hand-drawn sparkle rays -->
+    <g stroke-width="2.2">
+      <path d="M36.5 6.5 C36.4 7.7 36.6 8.9 36.5 10.1"/>
+      <path d="M36.5 15 C36.6 16.2 36.4 17.4 36.6 18.6"/>
+      <path d="M30.4 12.6 C31.6 12.4 32.8 12.7 34 12.5"/>
+      <path d="M39 12.5 C40.2 12.7 41.4 12.4 42.6 12.6"/>
+    </g>
+  </g>
+</svg>
