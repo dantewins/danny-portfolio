@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader } from '@/components/ui/card';
 import { ArrowRight, Play } from 'lucide-react';
-import { SwordIcon, HurricaneIcon, RabbitIcon, NoteIcon } from '@phosphor-icons/react';
+import { SwordIcon, HurricaneIcon, RabbitIcon, NoteIcon, FlaskIcon } from '@phosphor-icons/react';
 import { useRef } from 'react';
 
 const projects = [
@@ -14,6 +14,12 @@ const projects = [
     desc: "A Wordle-style SAT vocab game with solo play and real-time multiplayer, built with Next.js and Supabase.",
     repo: "https://github.com/dantewins/swordle",
     icon: <SwordIcon size={32} weight="duotone" className="text-zinc-900" />,
+  },
+  {
+    title: "Scioly",
+    desc: "Full-stack platform for Science Olympiad clubs: applications, hours, dues, forms, competitions, rosters, practice tests in one place.",
+    repo: "https://scioly-ten.vercel.app/",
+    icon: <FlaskIcon size={32} weight="duotone" className="text-zinc-900" />,
   },
   {
     title: "Huracan",
