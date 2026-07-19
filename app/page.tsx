@@ -100,7 +100,7 @@ export default function Portfolio() {
           <div className="items-center">
             <div className="space-y-4">
               <h6 className="text-2xl sm:text-3xl text-zinc-700 leading-relaxed font-[raleway]">
-                <span className='font-[merriweather] underline underline-offset-3 decoration-wavy'>Ideas</span> makes me feel <i className='font-medium'>alive</i>
+                <span className='font-[merriweather] underline underline-offset-3 decoration-wavy'>Ideas</span> make me feel <i className='font-medium'>alive</i>
               </h6>
             </div>
           </div>
