@@ -22,7 +22,7 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio - Danny",
+  title: "Danny Kim",
   description: "Danny's developer portfolio showcasing projects and skills",
 };
 
