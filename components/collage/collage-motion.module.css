@@ -1,0 +1,120 @@
+.dialog {
+  animation: dialogFade 220ms ease both;
+}
+
+.panel {
+  animation: dialogLift 400ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+}
+
+.frame,
+.note {
+  --frame-rotate: 0deg;
+  opacity: 0;
+  animation: collageReveal 620ms cubic-bezier(0.16, 1, 0.3, 1)
+    var(--collage-delay) both;
+}
+
+.dialog[data-state="closing"] {
+  pointer-events: none;
+  animation: dialogFadeOut 300ms ease 340ms both;
+}
+
+.dialog[data-state="closing"] .panel {
+  animation: dialogLower 280ms cubic-bezier(0.4, 0, 1, 1) 320ms both;
+}
+
+.dialog[data-state="closing"] .frame {
+  animation: collageExit 260ms cubic-bezier(0.4, 0, 1, 1)
+    var(--collage-exit-delay) both;
+}
+
+.dialog[data-state="closing"] .note {
+  animation: collageNoteExit 200ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+@keyframes dialogFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialogFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes dialogLift {
+  from {
+    opacity: 0;
+    transform: translateY(1.3rem) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dialogLower {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(0.8rem) scale(0.99);
+  }
+}
+
+@keyframes collageReveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem) scale(0.92) rotate(var(--frame-rotate));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(var(--frame-rotate));
+  }
+}
+
+@keyframes collageExit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(var(--frame-rotate));
+  }
+  to {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.94) rotate(var(--frame-rotate));
+  }
+}
+
+@keyframes collageNoteExit {
+  from {
+    opacity: 1;
+    transform: translateY(0) rotate(2deg);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(0.6rem) rotate(2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame,
+  .note {
+    opacity: 1;
+  }
+
+  .dialog[data-state="closing"],
+  .dialog[data-state="closing"] .panel,
+  .dialog[data-state="closing"] .frame,
+  .dialog[data-state="closing"] .note {
+    animation-delay: 0ms !important;
+  }
+}

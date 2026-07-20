@@ -3,19 +3,19 @@ import { Poppins, Merriweather, Raleway } from "next/font/google";
 import "./globals.css";
 
 const poppins = Poppins({
-  variable: "--font-poppins",
+  variable: "--font-poppins-face",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 const merriweather = Merriweather({
-  variable: "--font-merriweather",
+  variable: "--font-merriweather-face",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 const raleway = Raleway({
-  variable: "--font-raleway",
+  variable: "--font-raleway-face",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
@@ -41,9 +41,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth bg-white">
       <body
-        className={`${poppins.variable} ${merriweather.variable} ${raleway.variable} antialiased`}
+        className={`${poppins.variable} ${merriweather.variable} ${raleway.variable} min-w-[320px] bg-white font-merriweather text-[#11110f] antialiased selection:bg-[#d8d8d8] selection:text-[#11110f]`}
       >
         {children}
       </body>
