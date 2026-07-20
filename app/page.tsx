@@ -17,7 +17,7 @@ export default function Portfolio() {
     <div className="min-h-screen antialiased">
       <main className="mx-auto max-w-5xl px-6">
         {/* Hero */}
-        <section className="py-20 lg:py-32 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <section className="min-h-svh py-12 sm:py-16 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
           <div className="flex-1 space-y-7 lg:space-y-7 text-center lg:text-left">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-tight text-zinc-900">
               Hello! My <span className="font-light font-[merriweather] lg:italic non-italic">name is </span> <span className="font-medium">Danny</span>.

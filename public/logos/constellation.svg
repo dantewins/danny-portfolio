@@ -1,0 +1,28 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Constellation: the five projects (sword, flask, hurricane, rabbit, note) orbiting the wavy underline -->
+  <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- top: sword (Swordle) -->
+    <path d="M24 7.5 L24 13.5"/>
+    <path d="M22 9.5 L26 9.5"/>
+    <!-- right: flask (Scioly) -->
+    <path d="M36.1 16.2 L33.4 21.6 L38.8 21.6 Z"/>
+    <!-- bottom-right: spiral curl (Huracan) -->
+    <path d="M33.8 33.2 C33.8 31.6 32.4 30.8 31.2 31.6 C30 32.4 30.2 34.4 31.6 35 C33.2 35.7 34.8 34.6 34.9 32.9"/>
+    <!-- bottom-left: rabbit ears (Bunni) -->
+    <path d="M15.2 31 C14.9 32.8 15 34.6 15.4 36.2"/>
+    <path d="M17.6 31 C17.9 32.8 17.7 34.6 17.3 36.2"/>
+    <!-- left: note (Expounder) -->
+    <path d="M9 17.5 L14 17.5 L14 23 L9 23 Z"/>
+    <path d="M10.3 19.5 L12.7 19.5"/>
+    <!-- center: the wavy underline -->
+    <path d="M20.5 24.3 C21.6 23 22.7 25.4 23.8 24.1 C24.9 22.9 26 25.3 27.1 24.1"/>
+  </g>
+  <!-- dotted constellation lines linking the five projects -->
+  <g stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none" stroke-dasharray="0.1 3">
+    <path d="M27 12.5 L33.5 16.5"/>
+    <path d="M35.5 23 L33.6 30.5"/>
+    <path d="M29 34.5 L20 34"/>
+    <path d="M14.5 30.5 L11.5 24.8"/>
+    <path d="M13 16.5 L20.8 12"/>
+  </g>
+</svg>
