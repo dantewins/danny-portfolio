@@ -19,10 +19,10 @@ export const bunni = {
   ],
   live: "https://bunni-nine.vercel.app",
   hero: {
-    src: "/work/bunni/landing.svg",
+    src: "/work/bunni/preview.jpg",
     alt: "Bunni landing page describing the Notion-backed calendar workflow",
-    width: 1200,
-    height: 800,
+    width: 1280,
+    height: 720,
   },
   sections: [
     {

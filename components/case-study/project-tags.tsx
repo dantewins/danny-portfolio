@@ -6,7 +6,7 @@ export function ProjectTags({ project }: { project: Project }) {
       {[project.published, project.role].map((tag) => (
         <span
           key={tag}
-          className="rounded-full border border-zinc-200 px-3 py-1 font-merriweather text-xs font-light text-zinc-600 italic sm:text-sm"
+          className="rounded-full border border-zinc-200 px-3 py-1 font-raleway text-xs font-light text-zinc-600 sm:text-sm"
         >
           {tag}
         </span>

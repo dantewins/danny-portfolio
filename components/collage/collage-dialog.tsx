@@ -2,6 +2,7 @@ import { RotateCcw, X } from "lucide-react";
 import type { MouseEvent, RefObject } from "react";
 import { CollageStage } from "@/components/collage/collage-stage";
 import type { CollageDialogState } from "@/components/collage/use-collage-dialog";
+import { cn } from "@/lib/utils";
 import motion from "@/components/collage/collage-motion.module.css";
 
 type CollageDialogProps = {
@@ -68,7 +69,10 @@ export function CollageDialog({
             <button
               ref={closeButtonRef}
               type="button"
-              className={`${iconButtonClassName} border-[#11110f] bg-[#11110f] text-white hover:border-[#11110f] hover:bg-white hover:text-[#11110f] focus-visible:border-[#11110f] focus-visible:bg-white focus-visible:text-[#11110f]`}
+              className={cn(
+                iconButtonClassName,
+                "border-[#11110f] bg-[#11110f] text-white hover:border-[#11110f] hover:bg-white hover:text-[#11110f] focus-visible:border-[#11110f] focus-visible:bg-[#11110f] focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#11110f]",
+              )}
               onClick={onRequestClose}
               aria-label="Close image collage"
             >

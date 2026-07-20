@@ -13,10 +13,10 @@ export const expounder = {
   repository: "https://github.com/dantewins/expounder",
   live: "https://expounder.vercel.app",
   hero: {
-    src: "/work/expounder/landing.svg",
+    src: "/work/expounder/preview.jpg",
     alt: "Expounder landing page with its product pitch",
-    width: 1200,
-    height: 800,
+    width: 1280,
+    height: 720,
   },
   sections: [
     {

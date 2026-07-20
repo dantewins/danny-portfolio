@@ -20,10 +20,10 @@ export const huracan = {
   repository: "https://github.com/dantewins/huracan",
   live: "https://huracan-eosin.vercel.app",
   hero: {
-    src: "/work/huracan/dashboard.svg",
+    src: "/work/huracan/preview.jpg",
     alt: "Huracan dashboard with its inspection composer and saved-chat sidebar",
-    width: 1200,
-    height: 800,
+    width: 1280,
+    height: 720,
   },
   sections: [
     {
