@@ -44,6 +44,7 @@ async function main() {
       role: project.role,
       publishedLabel: project.published,
       icon: project.icon,
+      featured: project.featured,
       stack: project.stack,
       repository: project.repository ?? null,
       live: project.live ?? null,

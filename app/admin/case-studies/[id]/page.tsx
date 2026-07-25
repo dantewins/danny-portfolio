@@ -40,6 +40,7 @@ export default async function EditCaseStudyPage({
           role: caseStudy.role,
           publishedLabel: caseStudy.publishedLabel,
           icon: caseStudy.icon,
+          featured: caseStudy.featured,
           stack: caseStudy.stack,
           repository: caseStudy.repository ?? "",
           live: caseStudy.live ?? "",
@@ -58,6 +59,7 @@ export default async function EditCaseStudyPage({
             imageWidth: slide.imageWidth,
             imageHeight: slide.imageHeight,
             theme: slide.theme as EditableSlide["theme"],
+            layout: slide.layout as EditableSlide["layout"],
           })),
           sections: caseStudy.sections.map((section) => ({
             kind: section.kind as EditableSection["kind"],

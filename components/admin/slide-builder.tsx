@@ -3,7 +3,12 @@
 import { Field, TextArea } from "@/components/admin/field";
 import { ImageField } from "@/components/admin/image-field";
 import { HeroSlide } from "@/components/case-study/hero-slide";
-import { SLIDE_THEMES, type SlideTheme } from "@/lib/projects/types";
+import {
+  SLIDE_LAYOUTS,
+  SLIDE_THEMES,
+  type SlideLayout,
+  type SlideTheme,
+} from "@/lib/projects/types";
 
 export type EditableSlide = {
   eyebrow: string;
@@ -14,6 +19,7 @@ export type EditableSlide = {
   imageWidth: number;
   imageHeight: number;
   theme: SlideTheme;
+  layout: SlideLayout;
 };
 
 export function SlideBuilder({
@@ -41,19 +47,36 @@ export function SlideBuilder({
       {slides.map((slide, index) => (
         <div key={index} className="rounded-xl border border-zinc-200 p-4 sm:p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <select
-              value={slide.theme}
-              onChange={(event) =>
-                update(index, { theme: event.target.value as SlideTheme })
-              }
-              className="rounded-lg border border-zinc-200 px-2 py-1 font-poppins text-sm text-zinc-800"
-            >
-              {SLIDE_THEMES.map((theme) => (
-                <option key={theme} value={theme}>
-                  {theme}
-                </option>
-              ))}
-            </select>
+            <div className="flex items-center gap-2">
+              <select
+                value={slide.theme}
+                onChange={(event) =>
+                  update(index, { theme: event.target.value as SlideTheme })
+                }
+                className="rounded-lg border border-zinc-200 px-2 py-1 font-poppins text-sm text-zinc-800"
+                aria-label="Slide field colour"
+              >
+                {SLIDE_THEMES.map((theme) => (
+                  <option key={theme} value={theme}>
+                    {theme}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={slide.layout}
+                onChange={(event) =>
+                  update(index, { layout: event.target.value as SlideLayout })
+                }
+                className="rounded-lg border border-zinc-200 px-2 py-1 font-poppins text-sm text-zinc-800"
+                aria-label="Text position"
+              >
+                {SLIDE_LAYOUTS.map((layout) => (
+                  <option key={layout} value={layout}>
+                    text {layout}
+                  </option>
+                ))}
+              </select>
+            </div>
 
             <div className="flex items-center gap-1">
               <button
@@ -147,6 +170,7 @@ export function SlideBuilder({
                       height: slide.imageHeight,
                     },
                     theme: slide.theme,
+                    layout: slide.layout,
                   }}
                 />
               </div>
@@ -169,6 +193,7 @@ export function SlideBuilder({
               imageWidth: 1440,
               imageHeight: 930,
               theme: "light",
+              layout: "left",
             },
           ])
         }

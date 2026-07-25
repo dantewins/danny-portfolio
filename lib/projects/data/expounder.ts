@@ -9,6 +9,7 @@ export const expounder = {
   dek: "A repository explorer that reads your codebase and writes the README: retrieval pipeline first, prompt second.",
   role: "Full-stack + AI",
   icon: "Note",
+  featured: true,
   published: "July 2025",
   stack: ["Next.js 15", "TypeScript", "Clerk", "Octokit", "OpenAI"],
   repository: "https://github.com/dantewins/expounder",

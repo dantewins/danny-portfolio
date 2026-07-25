@@ -9,6 +9,7 @@ export const swordle = {
   dek: "A Wordle-style SAT vocabulary game with solo rounds and realtime multiplayer. The real work was deciding which state the browser can own, and which state the server must authorize.",
   role: "Full-stack",
   icon: "Sword",
+  featured: true,
   published: "July 2025",
   stack: ["Next.js 15", "React 19", "TypeScript", "Tailwind 4", "Supabase"],
   repository: "https://github.com/dantewins/swordle",

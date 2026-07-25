@@ -16,10 +16,11 @@ export type {
   ProjectSlug,
   ProseSection,
   CaseSlide,
+  SlideLayout,
   SlideTheme,
 } from "@/lib/projects/types";
 
-export { SLIDE_THEMES } from "@/lib/projects/types";
+export { SLIDE_LAYOUTS, SLIDE_THEMES } from "@/lib/projects/types";
 
 export const CASE_STUDIES_TAG = "case-studies";
 
@@ -39,6 +40,12 @@ export const getProjects = unstable_cache(
   ["case-studies"],
   { tags: [CASE_STUDIES_TAG] },
 );
+
+/** The landing page shows only these; /work lists everything. */
+export async function getFeaturedProjects() {
+  const projects = await getProjects();
+  return projects.filter((project) => project.featured);
+}
 
 export async function getProject(slug: string) {
   const projects = await getProjects();

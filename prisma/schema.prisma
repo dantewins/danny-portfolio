@@ -44,7 +44,9 @@ model CaseStudy {
   heroHeight       Int
   flow             String[]
   takeaway         String
-  // Drives both the homepage list and the circular next-project link.
+  // Only featured case studies appear on the landing page; /work lists all.
+  featured         Boolean       @default(true)
+  // Drives list order and the circular next-project link.
   order            Int           @default(0)
   sections         CaseSection[]
   slides           CaseSlide[]
@@ -73,6 +75,8 @@ model CaseSlide {
   imageHeight Int       @default(930)
   // light | ink
   theme       String    @default("light")
+  // left | right | top | overlay — where the text sits vs the screenshot
+  layout      String    @default("left")
 
   @@index([caseStudyId, order])
 }

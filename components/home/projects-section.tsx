@@ -1,24 +1,31 @@
 import { ProjectCard } from "@/components/home/project-card";
-import { getProjects } from "@/lib/projects";
+import { SectionHeader } from "@/components/home/section-header";
+import { getFeaturedProjects, getProjects } from "@/lib/projects";
 
 export async function ProjectsSection() {
-  const projects = await getProjects();
+  const [featured, all] = await Promise.all([
+    getFeaturedProjects(),
+    getProjects(),
+  ]);
+
+  if (featured.length === 0) return null;
 
   return (
     <section id="projects" className="py-20 lg:py-32">
-      <div className="items-center">
-        <div className="space-y-4">
-          <h6 className="font-raleway text-2xl leading-relaxed text-zinc-700 sm:text-3xl">
-            <span className="font-merriweather decoration-wavy underline underline-offset-3">
-              Ideas
-            </span>{" "}
-            make me feel <i className="font-medium">alive</i>
-          </h6>
-        </div>
-      </div>
+      <SectionHeader
+        actionLabel={
+          all.length > featured.length ? "All projects" : "All case studies"
+        }
+        actionHref="/work"
+      >
+        <span className="font-merriweather decoration-wavy underline underline-offset-3">
+          Ideas
+        </span>{" "}
+        make me feel <i className="font-medium">alive</i>
+      </SectionHeader>
 
-      <div className="mt-2 grid gap-4 md:mt-4 md:grid-cols-1 lg:mt-6">
-        {projects.map((project) => (
+      <div className="mt-6 grid gap-4 md:grid-cols-1 lg:mt-8">
+        {featured.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}
       </div>

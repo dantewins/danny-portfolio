@@ -25,6 +25,7 @@ export type CaseStudyState = {
   role: string;
   publishedLabel: string;
   icon: string;
+  featured: boolean;
   stack: string[];
   repository: string;
   live: string;
@@ -136,6 +137,21 @@ export function CaseStudyEditor({ caseStudy }: { caseStudy: CaseStudyState }) {
             onChange={(icon) => set("icon", icon)}
           />
         </div>
+
+        <label className="flex items-center gap-3">
+          <input
+            type="checkbox"
+            checked={state.featured}
+            onChange={(event) => set("featured", event.target.checked)}
+            className="size-4 accent-zinc-900"
+          />
+          <span className="font-poppins text-sm text-zinc-700">
+            Featured on the home page
+          </span>
+          <span className="font-merriweather text-xs font-light text-zinc-400 italic">
+            unfeatured still appears at /work
+          </span>
+        </label>
 
         <TextArea
           label="Short description"

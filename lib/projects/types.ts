@@ -89,6 +89,15 @@ export const SLIDE_THEMES = ["light", "ink"] as const;
 
 export type SlideTheme = (typeof SLIDE_THEMES)[number];
 
+// Where the text sits relative to the screenshot.
+//   left    text left, screenshot runs off the right edge
+//   right   mirrored, screenshot runs off the left edge
+//   top     text above, screenshot rises from the bottom edge
+//   overlay text on the screenshot, behind a scrim
+export const SLIDE_LAYOUTS = ["left", "right", "top", "overlay"] as const;
+
+export type SlideLayout = (typeof SLIDE_LAYOUTS)[number];
+
 export type CaseSlide = {
   eyebrow: string;
   // Asterisks mark the words rendered in the site's italic serif accent.
@@ -96,6 +105,7 @@ export type CaseSlide = {
   subhead: string;
   image: ProjectHero;
   theme: SlideTheme;
+  layout: SlideLayout;
 };
 
 export type Project = {
@@ -107,6 +117,7 @@ export type Project = {
   role: string;
   published: string;
   icon: ProjectIcon;
+  featured: boolean;
   stack: string[];
   repository?: string;
   live?: string;

@@ -9,6 +9,7 @@ export const huracan = {
   dek: "A chat tool for hurricane recovery: photos of damage go in, and structured repair guidance comes out, grounded in location context and FEMA data.",
   role: "Full-stack + AI",
   icon: "Hurricane",
+  featured: true,
   published: "October 2025",
   stack: [
     "Next.js 15",

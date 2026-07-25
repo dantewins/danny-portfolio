@@ -7,9 +7,10 @@ import type {
   CaseSection,
   CaseSlide,
   Project,
+  SlideLayout,
   SlideTheme,
 } from "@/lib/projects/types";
-import { SLIDE_THEMES } from "@/lib/projects/types";
+import { SLIDE_LAYOUTS, SLIDE_THEMES } from "@/lib/projects/types";
 
 type CaseStudyWithSections = CaseStudy & {
   sections: CaseSectionRow[];
@@ -30,6 +31,9 @@ function toSlide(row: CaseSlideRow): CaseSlide {
     theme: (SLIDE_THEMES as readonly string[]).includes(row.theme)
       ? (row.theme as SlideTheme)
       : "light",
+    layout: (SLIDE_LAYOUTS as readonly string[]).includes(row.layout)
+      ? (row.layout as SlideLayout)
+      : "left",
   };
 }
 
@@ -105,6 +109,7 @@ export function toProject(row: CaseStudyWithSections): Project {
     role: row.role,
     published: row.publishedLabel,
     icon: row.icon,
+    featured: row.featured,
     stack: row.stack,
     repository: row.repository ?? undefined,
     live: row.live ?? undefined,

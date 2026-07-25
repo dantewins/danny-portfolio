@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { SectionHeader } from "@/components/home/section-header";
 import { getPublishedPosts } from "@/lib/posts";
 
 function formatDate(iso?: string) {
@@ -18,12 +19,13 @@ export async function WritingSection() {
 
   return (
     <section id="writing" className="py-20 lg:py-32">
-      <h6 className="font-raleway text-2xl leading-relaxed text-zinc-700 sm:text-3xl">
-        Some things I&rsquo;ve been{" "}
-        <i className="font-merriweather font-light">thinking about</i>
-      </h6>
+      <SectionHeader actionLabel="All writing" actionHref="/blog">
+        <b className="font-medium">Some</b> things{" "}
+        <u className="underline-offset-6">I&rsquo;ve</u> been{" "}
+        <i className="font-merriweather font-light">thinking</i> about
+      </SectionHeader>
 
-      <ul className="mt-8 lg:mt-12">
+      <ul className="mt-6 lg:mt-8">
         {posts.map((post) => (
           <li key={post.slug} className="border-t border-zinc-200 last:border-b">
             <Link
@@ -51,14 +53,6 @@ export async function WritingSection() {
           </li>
         ))}
       </ul>
-
-      <Link
-        href="/blog"
-        className="group mt-8 inline-flex items-center gap-2 font-poppins text-sm text-zinc-500 transition-colors hover:text-zinc-900 sm:text-base"
-      >
-        All writing
-        <ArrowRight className="size-4 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
-      </Link>
     </section>
   );
 }

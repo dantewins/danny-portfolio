@@ -24,6 +24,7 @@ const slides = [
     imageWidth: 1440,
     imageHeight: 930,
     theme: "ink",
+    layout: "left",
   },
   {
     order: 1,
@@ -36,6 +37,7 @@ const slides = [
     imageWidth: 1440,
     imageHeight: 930,
     theme: "light",
+    layout: "right",
   },
   {
     order: 2,
@@ -46,7 +48,8 @@ const slides = [
     imageAlt: "Scioly registration flow collecting club and school domain",
     imageWidth: 1280,
     imageHeight: 720,
-    theme: "light",
+    theme: "ink",
+    layout: "overlay",
   },
 ];
 

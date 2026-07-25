@@ -7,6 +7,7 @@ import { CASE_STUDIES_TAG } from "@/lib/projects";
 type Params = { params: Promise<{ id: string }> };
 
 const KINDS = ["prose", "code", "figure", "decision", "comparison"];
+const LAYOUTS = ["left", "right", "top", "overlay"];
 
 type IncomingSection = {
   kind?: string;
@@ -25,6 +26,7 @@ type IncomingSlide = {
   imageWidth?: number;
   imageHeight?: number;
   theme?: string;
+  layout?: string;
 };
 
 function bustCaches(slug?: string) {
@@ -161,6 +163,8 @@ export async function PATCH(request: Request, { params }: Params) {
             ? undefined
             : String(body.publishedLabel),
         icon: body.icon === undefined ? undefined : String(body.icon),
+        featured:
+          body.featured === undefined ? undefined : Boolean(body.featured),
         stack: asStringArray(body.stack),
         repository:
           body.repository === undefined
@@ -198,6 +202,9 @@ export async function PATCH(request: Request, { params }: Params) {
             imageWidth: Number(slide.imageWidth ?? 1440),
             imageHeight: Number(slide.imageHeight ?? 930),
             theme: slide.theme === "ink" ? "ink" : "light",
+            layout: LAYOUTS.includes(String(slide.layout))
+              ? String(slide.layout)
+              : "left",
           })),
         });
       }
