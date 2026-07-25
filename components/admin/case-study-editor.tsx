@@ -9,6 +9,10 @@ import {
   SectionBuilder,
   type EditableSection,
 } from "@/components/admin/section-builder";
+import {
+  SlideBuilder,
+  type EditableSlide,
+} from "@/components/admin/slide-builder";
 // Imported from the types module, not @/lib/projects: the barrel pulls in the
 // Prisma client, which must never reach a client component's bundle.
 import { PROJECT_ICONS } from "@/lib/projects/types";
@@ -32,6 +36,7 @@ export type CaseStudyState = {
   heroHeight: number;
   flow: string[];
   takeaway: string;
+  slides: EditableSlide[];
   sections: EditableSection[];
 };
 
@@ -213,6 +218,22 @@ export function CaseStudyEditor({ caseStudy }: { caseStudy: CaseStudyState }) {
           onChange={(value) => set("takeaway", value)}
           rows={3}
         />
+
+        <div className="pt-4">
+          <h2 className="font-poppins text-xl font-medium tracking-tight text-zinc-900">
+            Hero slides
+          </h2>
+          <p className="mt-1 font-raleway text-sm text-zinc-500">
+            Shown as a carousel at the top. With no slides, the hero image is
+            used instead.
+          </p>
+          <div className="mt-4">
+            <SlideBuilder
+              slides={state.slides}
+              onChange={(slides) => set("slides", slides)}
+            />
+          </div>
+        </div>
 
         <div className="pt-4">
           <h2 className="font-poppins text-xl font-medium tracking-tight text-zinc-900">

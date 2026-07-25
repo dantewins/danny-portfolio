@@ -47,10 +47,34 @@ model CaseStudy {
   // Drives both the homepage list and the circular next-project link.
   order            Int           @default(0)
   sections         CaseSection[]
+  slides           CaseSlide[]
   createdAt        DateTime      @default(now())
   updatedAt        DateTime      @updatedAt
 
   @@index([order])
+}
+
+// A composed hero slide: a real in-app screenshot plus the line that says what
+// the screen is doing. Rendered in CSS rather than flattened to an image, so it
+// stays editable and stays sharp.
+model CaseSlide {
+  id          String    @id @default(cuid())
+  caseStudy   CaseStudy @relation(fields: [caseStudyId], references: [id], onDelete: Cascade)
+  caseStudyId String
+  order       Int
+  // Names the screen, e.g. "Matchmaking". Optional.
+  eyebrow     String    @default("")
+  // Asterisks mark the words rendered in the site's italic serif accent.
+  headline    String
+  subhead     String    @default("")
+  imageSrc    String
+  imageAlt    String
+  imageWidth  Int       @default(1440)
+  imageHeight Int       @default(930)
+  // light | ink
+  theme       String    @default("light")
+
+  @@index([caseStudyId, order])
 }
 
 model CaseSection {

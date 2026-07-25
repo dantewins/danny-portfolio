@@ -26,6 +26,8 @@ export const huracan = {
     width: 1280,
     height: 720,
   },
+  // Authored in the admin; empty means the hero image is shown instead.
+  slides: [],
   sections: [
     {
       id: "pipeline",

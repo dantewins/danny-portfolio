@@ -19,6 +19,8 @@ export const swordle = {
     width: 1440,
     height: 930,
   },
+  // Authored in the admin; empty means the hero image is shown instead.
+  slides: [],
   sections: [
     {
       id: "server-truth",

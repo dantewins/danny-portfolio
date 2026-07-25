@@ -19,6 +19,8 @@ export const expounder = {
     width: 1280,
     height: 720,
   },
+  // Authored in the admin; empty means the hero image is shown instead.
+  slides: [],
   sections: [
     {
       id: "two-identities",

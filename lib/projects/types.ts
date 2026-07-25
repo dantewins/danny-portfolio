@@ -90,6 +90,21 @@ export type ProjectHero = {
   height: number;
 };
 
+// Two fields only. The screenshot is the most colourful thing on a monochrome
+// page, so the slide around it stays quiet rather than competing.
+export const SLIDE_THEMES = ["light", "ink"] as const;
+
+export type SlideTheme = (typeof SLIDE_THEMES)[number];
+
+export type CaseSlide = {
+  eyebrow: string;
+  // Asterisks mark the words rendered in the site's italic serif accent.
+  headline: string;
+  subhead: string;
+  image: ProjectHero;
+  theme: SlideTheme;
+};
+
 export type Project = {
   slug: ProjectSlug;
   title: string;
@@ -103,6 +118,8 @@ export type Project = {
   repository?: string;
   live?: string;
   hero: ProjectHero;
+  // Empty until slides are authored; the overview falls back to `hero`.
+  slides: CaseSlide[];
   sections: CaseSection[];
   flow: string[];
   takeaway: string;

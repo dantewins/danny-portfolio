@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { CaseStudyEditor } from "@/components/admin/case-study-editor";
 import type { EditableSection } from "@/components/admin/section-builder";
+import type { EditableSlide } from "@/components/admin/slide-builder";
 import { requireAdminPage } from "@/lib/admin/session";
 import { prisma } from "@/lib/db";
 
@@ -17,7 +18,10 @@ export default async function EditCaseStudyPage({
   const { id } = await params;
   const caseStudy = await prisma.caseStudy.findUnique({
     where: { id },
-    include: { sections: { orderBy: { order: "asc" } } },
+    include: {
+      sections: { orderBy: { order: "asc" } },
+      slides: { orderBy: { order: "asc" } },
+    },
   });
 
   if (!caseStudy) notFound();
@@ -45,6 +49,16 @@ export default async function EditCaseStudyPage({
           heroHeight: caseStudy.heroHeight,
           flow: caseStudy.flow,
           takeaway: caseStudy.takeaway,
+          slides: caseStudy.slides.map((slide) => ({
+            eyebrow: slide.eyebrow,
+            headline: slide.headline,
+            subhead: slide.subhead,
+            imageSrc: slide.imageSrc,
+            imageAlt: slide.imageAlt,
+            imageWidth: slide.imageWidth,
+            imageHeight: slide.imageHeight,
+            theme: slide.theme as EditableSlide["theme"],
+          })),
           sections: caseStudy.sections.map((section) => ({
             kind: section.kind as EditableSection["kind"],
             anchor: section.anchor,

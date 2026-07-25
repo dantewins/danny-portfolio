@@ -1,3 +1,4 @@
+import { HeroCarousel } from "@/components/case-study/hero-carousel";
 import { ProjectHeroImage } from "@/components/case-study/project-hero-image";
 import { ProjectTags } from "@/components/case-study/project-tags";
 import type { Project } from "@/lib/projects";
@@ -15,7 +16,13 @@ export function CaseStudyOverview({ project }: { project: Project }) {
         {project.dek}
       </p>
       <ProjectTags project={project} />
-      <ProjectHeroImage hero={project.hero} />
+      {/* Slides are authored per project; until one exists, the single hero
+          image stands in rather than showing an empty carousel. */}
+      {project.slides.length > 0 ? (
+        <HeroCarousel slides={project.slides} />
+      ) : (
+        <ProjectHeroImage hero={project.hero} />
+      )}
     </section>
   );
 }

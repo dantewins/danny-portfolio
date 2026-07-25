@@ -15,9 +15,11 @@ export type {
   ProjectIcon,
   ProjectSlug,
   ProseSection,
+  CaseSlide,
+  SlideTheme,
 } from "@/lib/projects/types";
 
-export { PROJECT_ICONS } from "@/lib/projects/types";
+export { PROJECT_ICONS, SLIDE_THEMES } from "@/lib/projects/types";
 
 export const CASE_STUDIES_TAG = "case-studies";
 
@@ -27,7 +29,10 @@ export const getProjects = unstable_cache(
   async (): Promise<Project[]> => {
     const rows = await prisma.caseStudy.findMany({
       orderBy: { order: "asc" },
-      include: { sections: { orderBy: { order: "asc" } } },
+      include: {
+        sections: { orderBy: { order: "asc" } },
+        slides: { orderBy: { order: "asc" } },
+      },
     });
     return rows.map(toProject);
   },

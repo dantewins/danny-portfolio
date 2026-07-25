@@ -1,8 +1,38 @@
-import type { CaseSection as CaseSectionRow, CaseStudy } from "@prisma/client";
-import type { CaseSection, Project, ProjectIcon } from "@/lib/projects/types";
-import { PROJECT_ICONS } from "@/lib/projects/types";
+import type {
+  CaseSection as CaseSectionRow,
+  CaseSlide as CaseSlideRow,
+  CaseStudy,
+} from "@prisma/client";
+import type {
+  CaseSection,
+  CaseSlide,
+  Project,
+  ProjectIcon,
+  SlideTheme,
+} from "@/lib/projects/types";
+import { PROJECT_ICONS, SLIDE_THEMES } from "@/lib/projects/types";
 
-type CaseStudyWithSections = CaseStudy & { sections: CaseSectionRow[] };
+type CaseStudyWithSections = CaseStudy & {
+  sections: CaseSectionRow[];
+  slides: CaseSlideRow[];
+};
+
+function toSlide(row: CaseSlideRow): CaseSlide {
+  return {
+    eyebrow: row.eyebrow,
+    headline: row.headline,
+    subhead: row.subhead,
+    image: {
+      src: row.imageSrc,
+      alt: row.imageAlt,
+      width: row.imageWidth,
+      height: row.imageHeight,
+    },
+    theme: (SLIDE_THEMES as readonly string[]).includes(row.theme)
+      ? (row.theme as SlideTheme)
+      : "light",
+  };
+}
 
 function toIcon(value: string): ProjectIcon {
   return (PROJECT_ICONS as readonly string[]).includes(value)
@@ -91,6 +121,7 @@ export function toProject(row: CaseStudyWithSections): Project {
       width: row.heroWidth,
       height: row.heroHeight,
     },
+    slides: [...row.slides].sort((a, b) => a.order - b.order).map(toSlide),
     sections: [...row.sections]
       .sort((a, b) => a.order - b.order)
       .map(toSection),

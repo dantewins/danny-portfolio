@@ -16,6 +16,17 @@ type IncomingSection = {
   data?: unknown;
 };
 
+type IncomingSlide = {
+  eyebrow?: string;
+  headline?: string;
+  subhead?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  theme?: string;
+};
+
 function bustCaches(slug?: string) {
   revalidateTag(CASE_STUDIES_TAG, { expire: 0 });
   revalidatePath("/");
@@ -34,7 +45,10 @@ export async function GET(_request: Request, { params }: Params) {
   const { id } = await params;
   const caseStudy = await prisma.caseStudy.findUnique({
     where: { id },
-    include: { sections: { orderBy: { order: "asc" } } },
+    include: {
+      sections: { orderBy: { order: "asc" } },
+      slides: { orderBy: { order: "asc" } },
+    },
   });
 
   if (!caseStudy) {
@@ -75,6 +89,22 @@ export async function PATCH(request: Request, { params }: Params) {
       return NextResponse.json(
         { error: `A case study with the slug "${nextSlug}" already exists` },
         { status: 409 },
+      );
+    }
+  }
+
+  const slides = Array.isArray(body.slides)
+    ? (body.slides as IncomingSlide[])
+    : undefined;
+
+  if (slides) {
+    const incomplete = slides.find(
+      (slide) => !slide.headline?.trim() || !slide.imageSrc?.trim(),
+    );
+    if (incomplete) {
+      return NextResponse.json(
+        { error: "Every slide needs a headline and a screenshot" },
+        { status: 400 },
       );
     }
   }
@@ -152,6 +182,26 @@ export async function PATCH(request: Request, { params }: Params) {
         order: body.order === undefined ? undefined : Number(body.order),
       },
     });
+
+    if (slides) {
+      await tx.caseSlide.deleteMany({ where: { caseStudyId: id } });
+      if (slides.length > 0) {
+        await tx.caseSlide.createMany({
+          data: slides.map((slide, order) => ({
+            caseStudyId: id,
+            order,
+            eyebrow: String(slide.eyebrow ?? ""),
+            headline: String(slide.headline ?? ""),
+            subhead: String(slide.subhead ?? ""),
+            imageSrc: String(slide.imageSrc ?? ""),
+            imageAlt: String(slide.imageAlt ?? ""),
+            imageWidth: Number(slide.imageWidth ?? 1440),
+            imageHeight: Number(slide.imageHeight ?? 930),
+            theme: slide.theme === "ink" ? "ink" : "light",
+          })),
+        });
+      }
+    }
 
     if (sections) {
       await tx.caseSection.deleteMany({ where: { caseStudyId: id } });
