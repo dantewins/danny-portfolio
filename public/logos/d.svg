@@ -1,11 +1,12 @@
 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Site mark: rounded black tile with a white 'D' knocked out. Matches app/icon.svg. -->
+  <!-- Site mark: rounded black tile with a white 'D' knocked out.
+       Must stay identical to app/icon.svg. -->
   <rect width="48" height="48" rx="11" fill="#11110f"/>
   <path
     fill="#ffffff"
     fill-rule="evenodd"
     clip-rule="evenodd"
-    d="M12 10 H23 C30.2 10 36 16.3 36 24 C36 31.7 30.2 38 23 38 H12 Z
-       M19 17 H23 C26.9 17 29 20.1 29 24 C29 27.9 26.9 31 23 31 H19 Z"
+    d="M13.5 10 H24 C31.2 10 37 16.3 37 24 C37 31.7 31.2 38 24 38 H13.5 Z
+       M20.5 17 H24 C27.9 17 30 20.1 30 24 C30 27.9 27.9 31 24 31 H20.5 Z"
   />
 </svg>
