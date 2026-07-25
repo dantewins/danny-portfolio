@@ -7,9 +7,15 @@ import type { Project, ProjectSlug } from "@/lib/projects/types";
 
 export type {
   CaseSection,
+  CodeSection,
+  ComparisonPane,
+  ComparisonSection,
+  DecisionSection,
+  FigureSection,
   Project,
   ProjectHero,
   ProjectSlug,
+  ProseSection,
 } from "@/lib/projects/types";
 
 // This order drives both the homepage list and circular next-project links.

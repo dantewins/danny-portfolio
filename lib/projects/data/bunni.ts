@@ -17,6 +17,7 @@ export const bunni = {
     "Gemini",
     "Vercel Cron",
   ],
+  repository: "https://github.com/dantewins/bunni",
   live: "https://bunni-nine.vercel.app",
   hero: {
     src: "/work/bunni/preview.jpg",
@@ -41,6 +42,47 @@ export const bunni = {
         "Query ranges span local midnight to local midnight",
         "The browser's timezone rides along on every calendar request",
       ],
+    },
+    {
+      kind: "code",
+      id: "day-key",
+      nav: "Day keys",
+      title: "A date is a *string*, not an instant",
+      body: "The bug was assignments landing on the wrong day for anyone east or west of the server. The cause was comparing timestamps when the question was never about instants — it was about which calendar day a user is looking at.",
+      code: {
+        filename: "src/lib/date.ts",
+        language: "ts",
+        source: `export const TZ = Intl.DateTimeFormat().resolvedOptions().timeZone
+
+export function dayKeyInTZ(d: Date, tz = TZ) {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: tz,
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+    }).formatToParts(d)
+    const get = (t: string) => parts.find((p) => p.type === t)?.value!
+    return \`\${get("year")}-\${get("month")}-\${get("day")}\`
+}`,
+        href: "https://github.com/dantewins/bunni/blob/main/src/lib/date.ts#L1-L13",
+      },
+      caption:
+        "Formatting in the target timezone and reassembling the parts yields a YYYY-MM-DD key that compares as a calendar day. Date-only values, offset timestamps, and floating timestamps all collapse to the same representation before anything downstream sees them.",
+    },
+    {
+      kind: "figure",
+      id: "surface",
+      nav: "Surface",
+      title: "The calendar was the *easy* half",
+      body: "What the product promises is a tidy academic calendar. What it actually required was two external systems agreeing on identity, schema, dates, and failure.",
+      figure: {
+        src: "/work/bunni/landing.svg",
+        alt: "Bunni landing page describing the Notion-backed calendar workflow",
+        width: 1200,
+        height: 800,
+        caption:
+          "Notion owns identity and storage; Canvas owns the source data. Bunni's job is reconciling them without either one noticing.",
+      },
     },
     {
       id: "canvas-sync",

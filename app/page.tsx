@@ -1,6 +1,6 @@
-import { AboutSection } from "@/components/home/about-section";
 import { FooterSection } from "@/components/home/footer-section";
 import { HeroSection } from "@/components/home/hero-section";
+import { HowIBuild } from "@/components/home/how-i-build";
 import { ProjectsSection } from "@/components/home/projects-section";
 
 export default function Portfolio() {
@@ -8,7 +8,7 @@ export default function Portfolio() {
     <div className="min-h-screen antialiased">
       <main className="mx-auto max-w-5xl px-6">
         <HeroSection />
-        <AboutSection />
+        <HowIBuild />
         <ProjectsSection />
         <FooterSection />
       </main>
