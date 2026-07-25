@@ -13,7 +13,7 @@ export default async function WorkIndexPage() {
   return (
     <div className="min-h-screen antialiased">
       <div className="mx-auto max-w-5xl px-6">
-        <CaseStudyTopBar />
+        <CaseStudyTopBar backLabel="Home" backHref="/" />
 
         <main className="pb-24 lg:pb-32">
           <h1 className="mt-8 font-poppins text-5xl font-medium tracking-tight text-zinc-900 sm:mt-12 sm:text-6xl">

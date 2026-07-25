@@ -43,7 +43,7 @@ export default async function PostPage({ params }: PostPageProps) {
   return (
     <div className="min-h-screen antialiased">
       <div className="mx-auto max-w-5xl px-6">
-        <CaseStudyTopBar />
+        <CaseStudyTopBar backLabel="All blogs" backHref="/blog" />
 
         <article className="max-w-3xl pb-24 lg:pb-32">
           <header className="mt-8 sm:mt-12">

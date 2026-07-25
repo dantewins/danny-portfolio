@@ -2,7 +2,17 @@ import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export function CaseStudyTopBar() {
+/**
+ * Shared top bar. The back link names wherever it actually goes, so a blog page
+ * does not offer to take you to case studies.
+ */
+export function CaseStudyTopBar({
+  backLabel = "All case studies",
+  backHref = "/work",
+}: {
+  backLabel?: string;
+  backHref?: string;
+}) {
   return (
     <header className="flex items-center justify-between py-8">
       <Link href="/" aria-label="Back to home">
@@ -15,11 +25,11 @@ export function CaseStudyTopBar() {
         />
       </Link>
       <Link
-        href="/#projects"
+        href={backHref}
         className="group inline-flex items-center gap-2 font-poppins text-sm text-zinc-500 transition-colors hover:text-zinc-900"
       >
         <ArrowLeft className="size-4 transition-transform duration-300 ease-in-out group-hover:-translate-x-1" />
-        All case studies
+        {backLabel}
       </Link>
     </header>
   );

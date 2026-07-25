@@ -41,13 +41,14 @@ export async function WritingSection() {
                 </p>
               </div>
 
-              <div className="flex shrink-0 items-center gap-3">
+              <div className="flex shrink-0 items-center gap-4">
                 {formatDate(post.publishedAt) ? (
-                  <span className="font-merriweather text-sm font-light text-zinc-400 italic">
+                  <span className="font-poppins text-sm text-zinc-400">
                     {formatDate(post.publishedAt)}
                   </span>
                 ) : null}
-                <ArrowRight className="size-4 text-zinc-400 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
+                {/* Same spin as the case study cards, so both lists behave alike. */}
+                <ArrowRight className="size-[1.4rem] shrink-0 transform text-zinc-500 transition-transform duration-1000 ease-in-out group-hover:rotate-[360deg]" />
               </div>
             </Link>
           </li>

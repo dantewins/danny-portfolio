@@ -157,11 +157,14 @@ export function HeroSlide({
             : "sm:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]"
         }`}
       >
+        {/* Both sides need a gutter: one against the slide edge, one against
+            the screenshot. Dropping the inner one lets the text touch the
+            image. */}
         <SlideText
           slide={slide}
           tone={theme}
           className={`px-6 pt-8 sm:py-10 ${
-            mirrored ? "sm:order-2 sm:pr-10 sm:pl-0" : "sm:pl-10"
+            mirrored ? "sm:order-2 sm:pr-10 sm:pl-8" : "sm:pr-8 sm:pl-10"
           }`}
         />
 
