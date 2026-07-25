@@ -5,25 +5,26 @@ import {
   RabbitIcon,
   SwordIcon,
 } from "@phosphor-icons/react/dist/ssr";
-import type { ProjectSlug } from "@/lib/projects";
+import type { ProjectIcon } from "@/lib/projects";
 
 const symbols = {
-  swordle: SwordIcon,
-  scioly: FlaskIcon,
-  huracan: HurricaneIcon,
-  bunni: RabbitIcon,
-  expounder: NoteIcon,
-} satisfies Record<ProjectSlug, typeof SwordIcon>;
+  sword: SwordIcon,
+  flask: FlaskIcon,
+  hurricane: HurricaneIcon,
+  rabbit: RabbitIcon,
+  note: NoteIcon,
+} satisfies Record<ProjectIcon, typeof SwordIcon>;
 
 export function ProjectSymbol({
-  slug,
+  icon,
   size = 32,
   className,
 }: {
-  slug: ProjectSlug;
+  icon: string;
   size?: number;
   className?: string;
 }) {
-  const Symbol = symbols[slug];
+  // Icons come from the database, so an unrecognized key must not crash a page.
+  const Symbol = symbols[icon as ProjectIcon] ?? NoteIcon;
   return <Symbol size={size} weight="duotone" className={className} />;
 }

@@ -15,7 +15,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <div className="flex items-center justify-between gap-4">
             <div className="flex min-w-0 items-center gap-1 md:gap-2">
               <div className="shrink-0">
-                <ProjectSymbol slug={project.slug} size={32} />
+                <ProjectSymbol icon={project.icon} size={32} />
               </div>
               <span className="flex items-center font-poppins text-xl font-medium tracking-tighter sm:text-2xl md:text-3xl">
                 {project.title}

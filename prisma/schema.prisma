@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Post {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  excerpt     String
+  // Tiptap document JSON. Rendered to HTML server-side, never with dangerouslySetInnerHTML.
+  body        Json
+  coverSrc    String?
+  coverAlt    String?
+  published   Boolean   @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([published, publishedAt])
+}
+
+model CaseStudy {
+  id               String        @id @default(cuid())
+  slug             String        @unique
+  title            String
+  category         String
+  shortDescription String
+  dek              String
+  role             String
+  // Display string such as "July 2025", not a sortable date.
+  publishedLabel   String
+  stack            String[]
+  repository       String?
+  live             String?
+  // Key into the icon set in components/project-symbol.tsx. Chosen in the admin.
+  icon             String        @default("note")
+  heroSrc          String
+  heroAlt          String
+  heroWidth        Int
+  heroHeight       Int
+  flow             String[]
+  takeaway         String
+  // Drives both the homepage list and the circular next-project link.
+  order            Int           @default(0)
+  sections         CaseSection[]
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@index([order])
+}
+
+model CaseSection {
+  id          String    @id @default(cuid())
+  caseStudy   CaseStudy @relation(fields: [caseStudyId], references: [id], onDelete: Cascade)
+  caseStudyId String
+  order       Int
+  // prose | code | figure | decision | comparison
+  kind        String
+  // The #anchor the sidebar nav scrolls to.
+  anchor      String
+  nav         String
+  title       String
+  // Variant-specific payload, validated against the CaseSection union on read.
+  data        Json
+
+  @@index([caseStudyId, order])
+}

@@ -16,7 +16,7 @@ export function NextCaseStudy({ project }: { project: Project }) {
       >
         <span className="flex min-w-0 items-center gap-2 md:gap-3">
           <ProjectSymbol
-            slug={project.slug}
+            icon={project.icon}
             size={30}
             className="shrink-0 text-zinc-900"
           />

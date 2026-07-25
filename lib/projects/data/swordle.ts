@@ -8,6 +8,7 @@ export const swordle = {
     "A six-attempt SAT vocabulary game with persistent solo rounds and realtime multiplayer matchmaking.",
   dek: "A Wordle-style SAT vocabulary game with solo rounds and realtime multiplayer. The real work was deciding which state the browser can own, and which state the server must authorize.",
   role: "Full-stack",
+  icon: "sword",
   published: "July 2025",
   stack: ["Next.js 15", "React 19", "TypeScript", "Tailwind 4", "Supabase"],
   repository: "https://github.com/dantewins/swordle",

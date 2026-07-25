@@ -1,21 +1,25 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CaseStudy } from "@/components/case-study/case-study";
-import { getNextProject, getProject, projects } from "@/lib/projects";
+import { getNextProject, getProject, getProjects } from "@/lib/projects";
 
 type CaseStudyPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const projects = await getProjects();
   return projects.map((project) => ({ slug: project.slug }));
 }
+
+// A case study created in the admin should appear without a redeploy.
+export const dynamicParams = true;
 
 export async function generateMetadata({
   params,
 }: CaseStudyPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProject(slug);
 
   if (!project) return {};
 
@@ -25,9 +29,11 @@ export async function generateMetadata({
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProject(slug);
 
   if (!project) notFound();
 
-  return <CaseStudy project={project} nextProject={getNextProject(project.slug)} />;
+  const nextProject = await getNextProject(project.slug);
+
+  return <CaseStudy project={project} nextProject={nextProject ?? project} />;
 }

@@ -1,7 +1,9 @@
 import { ProjectCard } from "@/components/home/project-card";
-import { projects } from "@/lib/projects";
+import { getProjects } from "@/lib/projects";
 
-export function ProjectsSection() {
+export async function ProjectsSection() {
+  const projects = await getProjects();
+
   return (
     <section id="projects" className="py-20 lg:py-32">
       <div className="items-center">

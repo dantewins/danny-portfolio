@@ -1,9 +1,17 @@
-export type ProjectSlug =
-  | "swordle"
-  | "scioly"
-  | "huracan"
-  | "bunni"
-  | "expounder";
+// Slugs are author-defined in the admin, so this is a plain string rather than
+// a closed union.
+export type ProjectSlug = string;
+
+// Keys of the icon set in components/project-symbol.tsx.
+export const PROJECT_ICONS = [
+  "sword",
+  "flask",
+  "hurricane",
+  "rabbit",
+  "note",
+] as const;
+
+export type ProjectIcon = (typeof PROJECT_ICONS)[number];
 
 type BaseSection = {
   id: string;
@@ -90,6 +98,7 @@ export type Project = {
   dek: string;
   role: string;
   published: string;
+  icon: ProjectIcon;
   stack: string[];
   repository?: string;
   live?: string;
