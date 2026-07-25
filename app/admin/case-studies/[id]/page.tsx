@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { CaseStudyEditor } from "@/components/admin/case-study-editor";
 import type { EditableSection } from "@/components/admin/section-builder";
+import { requireAdminPage } from "@/lib/admin/session";
 import { prisma } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
@@ -11,6 +12,8 @@ export default async function EditCaseStudyPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
+  await requireAdminPage();
+
   const { id } = await params;
   const caseStudy = await prisma.caseStudy.findUnique({
     where: { id },

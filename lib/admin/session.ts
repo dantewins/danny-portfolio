@@ -1,5 +1,6 @@
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 const COOKIE = "portfolio_admin";
 const ALG = "HS256";
@@ -77,5 +78,17 @@ export async function isAuthenticated() {
 export async function requireAdmin() {
   if (!(await isAuthenticated())) {
     throw new Error("Unauthorized");
+  }
+}
+
+/**
+ * Page-level guard for server components under /admin. proxy.ts already
+ * redirects anonymous visitors, but a matcher is easy to misconfigure and a
+ * silent failure there would serve content straight out of the database. Every
+ * admin page calls this before it queries anything.
+ */
+export async function requireAdminPage() {
+  if (!(await isAuthenticated())) {
+    redirect("/admin/login");
   }
 }

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { PostEditor } from "@/components/admin/post-editor";
+import { requireAdminPage } from "@/lib/admin/session";
 import { prisma } from "@/lib/db";
 import type { TiptapDoc } from "@/lib/posts/render";
 
@@ -11,6 +12,8 @@ export default async function EditPostPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
+  await requireAdminPage();
+
   const { id } = await params;
   const post = await prisma.post.findUnique({ where: { id } });
 

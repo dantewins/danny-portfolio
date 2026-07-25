@@ -167,7 +167,7 @@ export function RichEditor({ value, onChange }: RichEditorProps) {
         <input
           ref={fileInput}
           type="file"
-          accept="image/*"
+          accept="image/png,image/jpeg,image/webp,image/gif"
           className="hidden"
           onChange={(event) => {
             const file = event.target.files?.[0];
