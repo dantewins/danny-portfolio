@@ -2,16 +2,9 @@
 // a closed union.
 export type ProjectSlug = string;
 
-// Keys of the icon set in components/project-symbol.tsx.
-export const PROJECT_ICONS = [
-  "sword",
-  "flask",
-  "hurricane",
-  "rabbit",
-  "note",
-] as const;
-
-export type ProjectIcon = (typeof PROJECT_ICONS)[number];
+// A @phosphor-icons/react module name, e.g. "Sword". Validated at render time
+// against the generated list in lib/icons/names.ts.
+export type ProjectIcon = string;
 
 type BaseSection = {
   id: string;

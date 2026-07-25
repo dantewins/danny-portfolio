@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Field, ListField, TextArea } from "@/components/admin/field";
+import { IconPicker } from "@/components/admin/icon-picker";
 import { ImageField } from "@/components/admin/image-field";
 import { SaveBar } from "@/components/admin/save-bar";
 import {
@@ -13,9 +14,6 @@ import {
   SlideBuilder,
   type EditableSlide,
 } from "@/components/admin/slide-builder";
-// Imported from the types module, not @/lib/projects: the barrel pulls in the
-// Prisma client, which must never reach a client component's bundle.
-import { PROJECT_ICONS } from "@/lib/projects/types";
 
 export type CaseStudyState = {
   id: string;
@@ -133,20 +131,10 @@ export function CaseStudyEditor({ caseStudy }: { caseStudy: CaseStudyState }) {
             value={state.publishedLabel}
             onChange={(value) => set("publishedLabel", value)}
           />
-          <label className="block">
-            <span className="font-poppins text-sm text-zinc-700">Icon</span>
-            <select
-              value={state.icon}
-              onChange={(event) => set("icon", event.target.value)}
-              className="mt-1.5 w-full rounded-lg border border-zinc-200 px-3 py-2 font-raleway text-base text-zinc-900 outline-none focus:border-zinc-900"
-            >
-              {PROJECT_ICONS.map((icon) => (
-                <option key={icon} value={icon}>
-                  {icon}
-                </option>
-              ))}
-            </select>
-          </label>
+          <IconPicker
+            value={state.icon}
+            onChange={(icon) => set("icon", icon)}
+          />
         </div>
 
         <TextArea

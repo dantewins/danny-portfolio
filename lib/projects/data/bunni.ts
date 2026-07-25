@@ -8,7 +8,7 @@ export const bunni = {
     "A Notion-backed academic calendar with timezone-aware day views and a prototype Canvas synchronization pipeline.",
   dek: "A Notion-backed academic calendar with a Canvas sync pipeline. Most of the engineering is making two external data models agree about identity, schema, dates, and failure.",
   role: "Full-stack",
-  icon: "rabbit",
+  icon: "Rabbit",
   published: "August 2025",
   stack: [
     "Next.js 15",

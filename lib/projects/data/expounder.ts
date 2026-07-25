@@ -8,7 +8,7 @@ export const expounder = {
     "A repository explorer that ingests source files, retrieves relevant context, and generates a structured README with downloadable history.",
   dek: "A repository explorer that reads your codebase and writes the README: retrieval pipeline first, prompt second.",
   role: "Full-stack + AI",
-  icon: "note",
+  icon: "Note",
   published: "July 2025",
   stack: ["Next.js 15", "TypeScript", "Clerk", "Octokit", "OpenAI"],
   repository: "https://github.com/dantewins/expounder",

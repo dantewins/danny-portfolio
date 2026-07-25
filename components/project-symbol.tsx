@@ -1,21 +1,13 @@
-import {
-  FlaskIcon,
-  HurricaneIcon,
-  NoteIcon,
-  RabbitIcon,
-  SwordIcon,
-} from "@phosphor-icons/react/dist/ssr";
-import type { ProjectIcon } from "@/lib/projects";
+import { NoteIcon } from "@phosphor-icons/react/dist/ssr";
+import type { Icon } from "@phosphor-icons/react";
+import { isIconName } from "@/lib/icons/names";
 
-const symbols = {
-  sword: SwordIcon,
-  flask: FlaskIcon,
-  hurricane: HurricaneIcon,
-  rabbit: RabbitIcon,
-  note: NoteIcon,
-} satisfies Record<ProjectIcon, typeof SwordIcon>;
-
-export function ProjectSymbol({
+/**
+ * Loads one icon module on the server. A static namespace import would pull all
+ * 1500+ icons into the bundle for the sake of the handful actually used, so the
+ * name is validated against the generated list and imported on demand.
+ */
+export async function ProjectSymbol({
   icon,
   size = 32,
   className,
@@ -24,7 +16,18 @@ export function ProjectSymbol({
   size?: number;
   className?: string;
 }) {
-  // Icons come from the database, so an unrecognized key must not crash a page.
-  const Symbol = symbols[icon as ProjectIcon] ?? NoteIcon;
+  let Symbol: Icon = NoteIcon;
+
+  if (isIconName(icon)) {
+    try {
+      const loaded = (await import(
+        `@phosphor-icons/react/dist/ssr/${icon}`
+      )) as Record<string, Icon>;
+      Symbol = loaded[`${icon}Icon`] ?? NoteIcon;
+    } catch {
+      // Falls through to the default: a missing icon must not break a page.
+    }
+  }
+
   return <Symbol size={size} weight="duotone" className={className} />;
 }

@@ -7,10 +7,9 @@ import type {
   CaseSection,
   CaseSlide,
   Project,
-  ProjectIcon,
   SlideTheme,
 } from "@/lib/projects/types";
-import { PROJECT_ICONS, SLIDE_THEMES } from "@/lib/projects/types";
+import { SLIDE_THEMES } from "@/lib/projects/types";
 
 type CaseStudyWithSections = CaseStudy & {
   sections: CaseSectionRow[];
@@ -32,12 +31,6 @@ function toSlide(row: CaseSlideRow): CaseSlide {
       ? (row.theme as SlideTheme)
       : "light",
   };
-}
-
-function toIcon(value: string): ProjectIcon {
-  return (PROJECT_ICONS as readonly string[]).includes(value)
-    ? (value as ProjectIcon)
-    : "note";
 }
 
 /**
@@ -111,7 +104,7 @@ export function toProject(row: CaseStudyWithSections): Project {
     dek: row.dek,
     role: row.role,
     published: row.publishedLabel,
-    icon: toIcon(row.icon),
+    icon: row.icon,
     stack: row.stack,
     repository: row.repository ?? undefined,
     live: row.live ?? undefined,

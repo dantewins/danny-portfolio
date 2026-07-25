@@ -8,7 +8,7 @@ export const scioly = {
     "A Science Olympiad workspace that presents registration, role-aware operations, roster management, and season tracking as one product.",
   dek: "A platform for running a Science Olympiad club: registration, rosters, hours, dues, and competition history in one place. The hard part is that no two clubs delegate authority the same way.",
   role: "Full-stack",
-  icon: "flask",
+  icon: "Flask",
   published: "2026",
   stack: ["Next.js 16", "React 19", "Prisma", "Postgres", "Zod", "Resend"],
   repository: "https://github.com/dantewins/scioly",

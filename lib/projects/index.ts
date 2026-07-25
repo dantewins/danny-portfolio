@@ -19,7 +19,7 @@ export type {
   SlideTheme,
 } from "@/lib/projects/types";
 
-export { PROJECT_ICONS, SLIDE_THEMES } from "@/lib/projects/types";
+export { SLIDE_THEMES } from "@/lib/projects/types";
 
 export const CASE_STUDIES_TAG = "case-studies";
 

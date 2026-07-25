@@ -36,8 +36,8 @@ model CaseStudy {
   stack            String[]
   repository       String?
   live             String?
-  // Key into the icon set in components/project-symbol.tsx. Chosen in the admin.
-  icon             String        @default("note")
+  // A @phosphor-icons/react module name such as "Sword". Picked in the admin.
+  icon             String        @default("Note")
   heroSrc          String
   heroAlt          String
   heroWidth        Int
