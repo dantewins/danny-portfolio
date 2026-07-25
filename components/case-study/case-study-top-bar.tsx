@@ -7,11 +7,11 @@ export function CaseStudyTopBar() {
     <header className="flex items-center justify-between py-8">
       <Link href="/" aria-label="Back to home">
         <Image
-          src="/logos/kick.svg"
+          src="/logos/d.svg"
           alt="Danny Kim"
           width={30}
           height={30}
-          className="transition-transform duration-300 ease-in-out hover:-rotate-12"
+          className="rounded-[7px] transition-transform duration-300 ease-in-out hover:-rotate-12"
         />
       </Link>
       <Link
